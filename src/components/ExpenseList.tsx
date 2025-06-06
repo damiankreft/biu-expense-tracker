@@ -4,8 +4,9 @@ import ExpenseItem from "./ExpenseItem";
 import { useState, useEffect } from "react";
 import Modal from "./Modal";
 import ExpenseDetails from "./ExpenseDetails";
+import { BiEdit, BiSolidTrash } from "react-icons/bi";
 
-export default function ExpenseList({ expenses, onDelete }: { expenses: Expense[], onDelete: (id: string) => void }) {
+export default function ExpenseList({ expenses, onDelete, onEditClick: onEdit }: { expenses: Expense[], onDelete: (id: string) => void, onEditClick: (expense: Expense) => void }) {
     const [sortedExpenses, setSortedExpenses] = useState<Expense[]>([]);
     const [sortOrder, setSortOrderAmount] = useState<"asc" | "desc">("asc");
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -118,7 +119,11 @@ export default function ExpenseList({ expenses, onDelete }: { expenses: Expense[
                                     <button onClick={(e) => {
                                         e.stopPropagation();
                                         onDelete(expense.id.toString());
-                                    }} className="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                                    }} className="bg-red-500 text-white px-2 py-1 ml-2 rounded"><BiSolidTrash /></button>
+                                    <button onClick={(e) => {
+                                        e.stopPropagation();
+                                        onEdit(expense);
+                                    }} className="bg-yellow-500 text-white px-2 py-1 ml-2 rounded"><BiEdit /></button>
                                 </td>
                             }
                         />
@@ -126,10 +131,7 @@ export default function ExpenseList({ expenses, onDelete }: { expenses: Expense[
                 </tbody>
             </table>
             {selectedExpense && (
-                <Modal
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                >
+                <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                     <ExpenseDetails expense={selectedExpense} close={(e) => setIsModalOpen(false)} />
                 </Modal>
             )}
