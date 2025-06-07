@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "title": "Zakup spożywczy",
     "amount": 150,
     "category": "Jedzenie",
@@ -8,7 +8,7 @@
     "description": "Zakup produktów spożywczych w sklepie Lidl."
   },
   {
-    "id": 2,
+    "id": "2",
     "title": "Opłata za internet",
     "amount": 80,
     "category": "Rachunki",
@@ -16,7 +16,7 @@
     "description": "Miesięczna opłata za internet."
   },
   {
-    "id": 3,
+    "id": "3",
     "title": "Bilet na koncert",
     "amount": 200,
     "category": "Rozrywka",

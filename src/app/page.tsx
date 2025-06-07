@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { Expense } from "./types/Expense";
 import Modal from "../components/Modal";
 import ExpenseEdition from "@/components/ExepnseEdition";
+import ExpenseAddition from "@/components/ExpenseAddition";
 
 export default function Home() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState<Expense | null>(null);
   useEffect(() => {
     setExpenses(expenseData);
@@ -21,6 +23,9 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={() => {
+          setIsAddModalOpen(true);
+        }}>Add new expense</button>
         <ExpenseList expenses={expenses} onDelete={(x) => {
           handleDelete(x);
         }} onEditClick={(e) => {
@@ -37,9 +42,16 @@ export default function Home() {
               setSelectedExpense(null);
             }} />
           </Modal>
+
+          <Modal isOpen={isAddModalOpen} onClose={() => {setIsAddModalOpen(false);}}>
+            <ExpenseAddition onAdd={(expense) => {
+              setExpenses([...expenses, expense]);
+              setIsAddModalOpen(false);
+            }} />
+          </Modal>
       </main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <p>Exercise 5</p>
+        <p>s23447</p>
       </footer>
     </div>
   );
