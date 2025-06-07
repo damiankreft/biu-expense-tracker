@@ -12,7 +12,7 @@ export default function ExpenseEdition({
 
     const [title, setTitle] = useState(expense.title);
     const [amount, setAmount] = useState(expense.amount.toString());
-    const [category, setCategory] = useState(expense.category);
+    const [category, setCategory] = useState(expense.category.toLowerCase() as (typeof categories)[number]);
     const [date, setDate] = useState(expense.date);
     const [description, setDescription] = useState(expense.description);
 
@@ -83,11 +83,10 @@ export default function ExpenseEdition({
                 className="border rounded px-3 py-2"
                 value={category}
                 onChange={e => {
-                    setCategory(e.target.value);
+                    setCategory(category as (typeof categories)[number]);
                     validate();
                 }}
             >
-                <option value="">-- select a category --</option>
                 {categories.map(c => (
                     <option key={c} value={c}>
                         {c.slice(0, 1).toUpperCase() + c.slice(1)}
