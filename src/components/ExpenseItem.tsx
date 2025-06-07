@@ -12,7 +12,7 @@ export default function ExpenseItem({ expense, click: rowClick, children }: Expe
         <tr onClick={rowClick} className="hover:bg-gray-100 cursor-pointer transition-colors duration-150">
             <td className="p-2">{expense.title}</td>
             <td className="text-center p-2">${expense.amount}</td>
-            <td className="p-2">{expense.category}</td>
+            <td className="p-2">{expense.category.slice(0, 1).toUpperCase() + expense.category.slice(1)}</td>
             <td className="text-center p-2">{new Date(expense.date).toLocaleDateString()}</td>
             {
                 children

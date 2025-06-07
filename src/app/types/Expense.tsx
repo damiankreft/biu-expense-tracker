@@ -6,3 +6,27 @@ export type Expense = {
   date: string;
   description: string;
 }
+
+export const categories = [
+  "jedzenie",
+  "transport",
+  "rozrywka",
+  "zakupy",
+  "usługi",
+  "rachunki",
+  "zdrowie",
+  "edukacja",
+  "podróże",
+  "dom",
+  "technologia",
+  "sport",
+  "kultura",
+  "dzieci",
+  "zwierzęta",
+  "hobby",
+  "finanse",
+  "praca",
+  "społeczność",
+  "wydarzenia",
+  "inne",
+] as const;

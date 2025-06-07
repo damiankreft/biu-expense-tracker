@@ -34,9 +34,11 @@ export default function Home() {
           } />
           <Modal isOpen={isEditModalOpen} onClose={() => {setIsEditModalOpen(false);}}>
             <ExpenseEdition expense={selectedExpense!} onSaveEdit={(expense) => {
+              console.log(expense);
               var newExpenses = expenses.map((exp) => {
                 return exp.id === expense.id ? { ...exp, ...expense } : exp;
               });
+              console.log(newExpenses);
               setExpenses(newExpenses);
               setIsEditModalOpen(false);
               setSelectedExpense(null);
